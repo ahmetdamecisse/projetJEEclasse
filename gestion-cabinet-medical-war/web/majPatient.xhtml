@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" xmlns:en="http://xmlns.jcp.org/jsf/composite/entites">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>gdc medecin</title>
+            </f:facet>
+        </h:head>
+        <h:body>
+            <p:layout fullPage="true">
+                <p:layoutUnit position="north" size="120" resizable="true" closable="true" collapsible="true">
+                    Header
+                </p:layoutUnit>
+                <p:layoutUnit position="south" size="75" closable="true" collapsible="true">
+                    Footer
+                </p:layoutUnit>
+                <!--                <p:layoutUnit position="east" size="320" header="Calendrier" collapsible="true">
+                                    <p:calendar id="calendar1" mode="inline" value="#{controllerGestionMedecin.calendriermedecin}" size="50"/>
+                                    Space vide à exploiter.
+                                </p:layoutUnit>-->
+                <p:layoutUnit position="west" size="250" header="Left" collapsible="true">
+                    <p:menu>
+                        <p:submenu label="Actualités">
+                            <p:menuitem value="Demo" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
+                            <p:menuitem value="Documentation" url="http://www.primefaces.org/documentation.html" />
+                            <p:menuitem value="Forum" url="http://forum.primefaces.org/" />
+                            <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
+                        </p:submenu>
+                    </p:menu>
+                </p:layoutUnit>
+                <p:layoutUnit position="center">
+                    <!--wwwwwwwwwwwwwwwwwwwwwwww début wwwwwwwwwwwwwwwwwwwwwwwwwwwww-->
+                    <en:menuBarMedecin/>
+                    <br/>
+                    <!--********************formulaire pour modif************************************-->
+                    <h:form  class="well">
+                        <p:growl id="msgs1" showDetail="true" />  
+                        <p:panel id="basic1" header="Ajouter un patient" style="margin-bottom:20px; text-align: center">
+                            <h:panelGrid columns="4" columnClasses="label, value">
+                                <p:inputMask id="cni" value="#{controllerGestionPatients.patient.cni}" mask="9999999999999"  placeholder="CNI"/>
+                                <p:inputText value="#{controllerGestionPatients.patient.nom}"  label="Nom" placeholder="Nom*" required="true"/>
+                                <p:inputText value="#{controllerGestionPatients.patient.prenom}"  label="prenom" placeholder="Prénom*" required="true"/>
+                                <p:calendar id="datenaiss1" value="#{controllerGestionPatients.patient.datenaissance}" pattern="dd-MM-yyyy" mask="true"  placeholder="Date de naissance*" required="true" />
+                                <p:inputText value="#{controllerGestionPatients.patient.adresse}"  label="adresse" placeholder="Adresse*" required="true"/>
+                                <p:inputMask id="Telephone1" value="#{controllerGestionPatients.patient.telephone}" mask="99-999-99-99"  placeholder="Téléphone*" required="true"/>
+                                <p:inputText value="#{controllerGestionPatients.patient.mail}"  label="mail" placeholder="Mail"/>
+                                <p:inputText value="#{controllerGestionPatients.patient.bp}"  label="bp" placeholder="BP"/>
+                                <!-- il reste la photo -->
+                                <br/><br/><br/>
+                                <f:facet name="footer">
+                                    <h:commandButton  value="Ajouter"   action="#{controllerGestionPatients.ajouter()}"    rendered="#{not controllerGestionPatients.modifiable}"/>
+                                    <h:commandButton  value="Mettre à jour"  rendered="#{true}" action="#{controllerGestionPatients.maj()}" />
+                                    <h:commandButton  value="Annuler"   action="#{controllerGestionPatients.annuler()}"  />
+                                </f:facet>
+                            </h:panelGrid>
+                        </p:panel>
+                    </h:form>
+                    <!--wwwwwwwwwwwwwwwwwwwwwwwwww fin  ajout debut listewwwwwwwwwwwwwwwwwwwwwwwwwww-->
+                    <h:form>
+                        <p:dataTable id="tbl" var="patientx" value="#{controllerGestionPatients.listepatients}"
+                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                                     paginator="true" rows="10" style="margin-bottom:20px" 
+                                     scrollable="true" resizableColumns="true" draggableColumns="true" liveScroll="true">
+
+                            <f:facet name="{Exporters}">
+                                <h:commandLink>
+                                    <p:graphicImage name="/images/excel.jpg" width="25"/>
+                                    <p:dataExporter type="xls" target="tbl" fileName="Patients" />
+                                </h:commandLink>
+
+                                <h:commandLink>
+                                    <p:graphicImage name="/images/pdf.jpg" width="25"/>
+                                    <p:dataExporter type="pdf" target="tbl" fileName="Patients"/>
+                                </h:commandLink>
+
+                                <h:commandLink>
+                                    <p:graphicImage name="/images/csv.jpg" width="25"/>
+                                    <p:dataExporter type="csv" target="tbl" fileName="Patients" />
+                                </h:commandLink>
+
+                                <h:commandLink>
+                                    <p:graphicImage name="/images/xml.jpg" width="25"/>
+                                    <p:dataExporter type="xml" target="tbl" fileName="Patients" />
+                                </h:commandLink>
+                            </f:facet>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Id" />
+                                </f:facet>
+                                <h:outputText value="#{patientx.idpatient}" />
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="CNI"/>
+                                </f:facet>
+                                <h:outputText value="#{patientx.cni}" />
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Nom" />
+                                </f:facet>
+                                <h:outputText value="#{patientx.nom}" />
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Prénom" />
+                                </f:facet>
+                                <h:outputText value="#{patientx.prenom}" />
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Adresse" />
+                                </f:facet>
+                                <h:outputText value="#{patientx.adresse}" />
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Téléphone" />
+                                </f:facet>
+                                <h:outputText value="#{patientx.telephone}" />
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Mail" />
+                                </f:facet>
+                                <h:outputText value="#{patientx.mail}" />
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Date de naissance" />
+                                </f:facet>
+                                <h:outputText value="#{patientx.datenaissance}" />
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="BP" />
+                                </f:facet>
+                                <h:outputText value="#{patientx.bp}" />
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Modifier" />
+                                </f:facet>
+                                <h:commandLink  value="Modifier"   action="#{controllerGestionPatients.modifier(patientx)}"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Supprimer" />
+                                </f:facet>
+                                <h:commandButton  value="Supprimer"   action="#{controllerGestionPatients.supprimer(patientx)}"/>
+                            </p:column>
+
+                        </p:dataTable>
+                        <h3>Eporter les données de la page seulement</h3>
+                        <h:commandLink>
+                            <p:graphicImage name="/images/excel.jpg" />
+                            <p:dataExporter type="xls" target="tbl" fileName="Patients" pageOnly="true"/>
+                        </h:commandLink>
+
+                        <h:commandLink>
+                            <p:graphicImage name="/images/pdf.jpg" />
+                            <p:dataExporter type="pdf" target="tbl" fileName="Patients" pageOnly="true" />
+                        </h:commandLink>
+
+                        <h:commandLink>
+                            <p:graphicImage name="/images/csv.jpg" />
+                            <p:dataExporter type="csv" target="tbl" fileName="Patients" pageOnly="true" />
+                        </h:commandLink>
+
+                        <h:commandLink> 
+                            <p:graphicImage name="/images/xml.jpg" />
+                            <p:dataExporter type="xml" target="tbl" fileName="Patients" pageOnly="true" />
+                        </h:commandLink>
+                    </h:form>
+                    <!--wwwwwwwwwwwwwwwwwwwwwwwwww fin  listewwwwwwwwwwwwwwwwwwwwwwwwwww-->
+                </p:layoutUnit>
+            </p:layout>
+        </h:body>
+    </f:view>
+</html>
+

@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" xmlns:en="http://xmlns.jcp.org/jsf/composite/entites">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>maj-test</title>
+            </f:facet>
+        </h:head>
+        <h:body>
+            <p:layout fullPage="true">
+                <p:layoutUnit position="north" size="120" resizable="true" closable="true" collapsible="true">
+                    Header
+                </p:layoutUnit>
+                <p:layoutUnit position="south" size="75" closable="true" collapsible="true">
+                    Footer
+                </p:layoutUnit>
+                <p:layoutUnit position="east" size="320" header="Calendrier" collapsible="true">
+<!--                    <p:calendar id="calendar1" mode="inline" value="#{controllerGestionMedecin.calendriermedecin}" size="50"/>
+                    Space vide à exploiter.-->
+                </p:layoutUnit>
+                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                    <p:menu>
+                        <p:submenu label="Actualités">
+                            <p:menuitem value="Demo" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
+                            <p:menuitem value="Documentation" url="http://www.primefaces.org/documentation.html" />
+                            <p:menuitem value="Forum" url="http://forum.primefaces.org/" />
+                            <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
+                        </p:submenu>
+                    </p:menu>
+                </p:layoutUnit>
+                <p:layoutUnit position="center">
+                    <!--wwwwwwwwwwwwwwwwwwwwwwww début wwwwwwwwwwwwwwwwwwwwwwwwwwwww-->
+                    <en:menuBarMedecin/>
+                    <br/>
+                    <!--wwwwwwwwwwwwwwwwwwwwwwwwww fin wwwwwwwwwwwwwwwwwwwwwwwwwww-->
+                       <h:form>
+                        <p:dataTable id="tbl" var="testx" value="#{controllerGestionTests.listeTests}"
+                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                                     paginator="true" rows="10" style="margin-bottom:20px" 
+                                     scrollable="true" resizableColumns="true" draggableColumns="true">
+
+                            <f:facet name="{Exporters}">
+                                <h:commandLink>
+                                    <p:graphicImage name="/images/excel.jpg" width="25"/>
+                                    <p:dataExporter type="xls" target="tbl" fileName="tests" />
+                                </h:commandLink>
+
+                                <h:commandLink>
+                                    <p:graphicImage name="/images/pdf.jpg" width="25"/>
+                                    <p:dataExporter type="pdf" target="tbl" fileName="tests"/>
+                                </h:commandLink>
+
+                                <h:commandLink>
+                                    <p:graphicImage name="/images/csv.jpg" width="25"/>
+                                    <p:dataExporter type="csv" target="tbl" fileName="tests" />
+                                </h:commandLink>
+
+                                <h:commandLink>
+                                    <p:graphicImage name="/images/xml.jpg" width="25"/>
+                                    <p:dataExporter type="xml" target="tbl" fileName="tests" />
+                                </h:commandLink>
+                            </f:facet>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdTest" />
+                                </f:facet>
+                                <h:outputText value="#{testx.idtest}" />
+                            </p:column>
+                            
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdPatient" />
+                                </f:facet>
+                                <h:outputText value="#{testx.idpatient.idpatient}" />
+                            </p:column>
+                            
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdOrdonnance" />
+                                </f:facet>
+                                <h:outputText value="#{testx.idordonnance.idordonnance}" />
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="type de test" />
+                                </f:facet>
+                                <h:outputText value="#{testx.type}" />
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Libelé du test"/>
+                                </f:facet>
+                                <h:outputText value="#{testx.libele}" />
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Résultats" />
+                                </f:facet>
+                                <h:outputText value="#{testx.resultas}" />
+                            </p:column>
+                            
+                              <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Modifier" />
+                                </f:facet>
+                                  <h:commandButton  value="Modifier"   action="#{controllerGestionTests.modifier()}"/>
+                            </p:column>
+                            
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Modifier" />
+                                </f:facet>
+                                <h:commandButton  value="Supprimer"   action="#{controllerGestionTests.annuler()}"/>
+                            </p:column>
+
+                        </p:dataTable>
+                        <h3>Eporter les données de la page seulement</h3>
+                        <h:commandLink>
+                            <p:graphicImage name="/images/excel.jpg" />
+                            <p:dataExporter type="xls" target="tbl" fileName="tests" pageOnly="true"/>
+                        </h:commandLink>
+
+                        <h:commandLink>
+                            <p:graphicImage name="/images/pdf.jpg" />
+                            <p:dataExporter type="pdf" target="tbl" fileName="tests" pageOnly="true" />
+                        </h:commandLink>
+
+                        <h:commandLink>
+                            <p:graphicImage name="/images/csv.jpg" />
+                            <p:dataExporter type="csv" target="tbl" fileName="tests" pageOnly="true" />
+                        </h:commandLink>
+
+                        <h:commandLink> 
+                            <p:graphicImage name="/images/xml.jpg" />
+                            <p:dataExporter type="xml" target="tbl" fileName="tests" pageOnly="true" />
+                        </h:commandLink>
+                    </h:form>
+                    <!--wwwwwwwwwwwwwwwwwwwwwwwwww fin wwwwwwwwwwwwwwwwwwwwwwwwwww-->
+                </p:layoutUnit>
+            </p:layout>
+        </h:body>
+    </f:view>
+</html>
+
