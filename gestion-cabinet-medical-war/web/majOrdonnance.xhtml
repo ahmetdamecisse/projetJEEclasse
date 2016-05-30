@@ -66,6 +66,14 @@
                                     <p:dataExporter type="xml" target="tbl" fileName="ordonnances" />
                                 </h:commandLink>
                             </f:facet>
+                             
+                              <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="idOrdonnance" />
+                                </f:facet>
+                                  <h:outputText value="#{ordx.ordonnances.idordonnance}" />
+                            </p:column>
+                             
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="IdMedecin" />
@@ -105,7 +113,7 @@
                                 <f:facet name="header">
                                     <h:outputText value="Modifier" />
                                 </f:facet>
-                                <h:commandButton  value="Supprimer"   action="#{controllerGestionOrdonnance.supprimer()}"/>
+                                <h:commandButton  value="Supprimer"   action="#{controllerGestionOrdonnance.supprimer(ordx)}"/>
                             </p:column>
 
                         </p:dataTable>

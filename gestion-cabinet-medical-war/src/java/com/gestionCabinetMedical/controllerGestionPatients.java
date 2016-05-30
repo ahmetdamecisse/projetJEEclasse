@@ -76,7 +76,6 @@ public class controllerGestionPatients {
     }
 
     public String annuler() {
-        //On doit vider le formulaire
         return "majPatient.xhtml?faces-redirect=true";
     }
 

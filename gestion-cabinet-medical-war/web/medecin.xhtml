@@ -21,23 +21,42 @@
                     Footer
                 </p:layoutUnit>
                 <p:layoutUnit position="east" size="320" header="Calendrier" collapsible="true">
-<!--                    <p:calendar id="calendar1" mode="inline" value="#{controllerGestionMedecin.calendriermedecin}" size="50"/>
-                    Space vide à exploiter.-->
+                    <p:calendar id="calendar1" mode="inline" value="#{controllerGestionMedecin.calendriermedecin}"/>
+                    <h:form  class="well">
+                        <p:growl id="msgs1" showDetail="true" />  
+                        <p:panel id="basic1" header="Evénements" style="margin-bottom:20px; text-align: center">
+                            <h:panelGrid columns="1" columnClasses="label, value">
+                                <!-- utiliser les Dialog Framework - Basic -->
+                                <p:commandButton value="Réunions" icon="ui-icon-extlink" actionListener="#{dfView.viewCars}"/>
+                                <p:commandButton value="Séminaires" icon="ui-icon-extlink" actionListener="#{dfView.viewCars}" />
+                                <p:commandButton value="Campagnes" icon="ui-icon-extlink" actionListener="#{dfView.viewCars}" />
+                            </h:panelGrid>
+                        </p:panel>
+                    </h:form>
                 </p:layoutUnit>
-                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                <p:layoutUnit position="west" size="250" header="Santé" collapsible="true">
                     <p:menu>
                         <p:submenu label="Actualités">
-                            <p:menuitem value="Demo" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
-                            <p:menuitem value="Documentation" url="http://www.primefaces.org/documentation.html" />
-                            <p:menuitem value="Forum" url="http://forum.primefaces.org/" />
-                            <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
+                            <p:menuitem value="Minidtère de la Santé" url="http://www.sante.gouv.sn/" />
+                            <p:menuitem value="Le Monde Santé" url="http://www.lemonde.fr/sante/" />
+                            <p:menuitem value="fedecardio" url="http://www.fedecardio.org/" />
+                            <p:menuitem value="Le Point Santé" url="http://www.lepoint.fr/sante/" />
+                            <p:menuitem value="Gazette Santé Sociale" url="http://www.gazette-sante-social.fr/" />
+                            <p:menuitem value="TF1 Santé" url="http://lci.tf1.fr/science/sante/" />
+                            <p:menuitem value="20 Munites Santé" url="http://www.20minutes.fr/sante//" />
+                            <p:menuitem value="Semaine Santé" url="http://www.semaine-sante-mentale.fr/" />
+                            <p:menuitem value="UNAFAM" url="http://www.unafam.org/" />
                         </p:submenu>
                     </p:menu>
                 </p:layoutUnit>
                 <p:layoutUnit position="center">
                     <!--wwwwwwwwwwwwwwwwwwwwwwww début wwwwwwwwwwwwwwwwwwwwwwwwwwwww-->
                     <en:menuBarMedecin/>
-                    <!--wwwwwwwwwwwwwwwwwwwwwwwwww fin wwwwwwwwwwwwwwwwwwwwwwwwwww-->
+                    <!--wwwwwwwwwwwwwwwwwwwwwwwwww fin  début image wwwwwwwwwwwwwwwwwwwwwwwwwww-->
+<!--                    <p:galleria value="#{controllerGestionMedecin.images}" var="image" panelWidth="1000" panelHeight="413" showCaption="true">
+                        <p:graphicImage name="/imagepagemedecin/#{image}" alt="Image Description for #{image}" title="#{image}"/>
+                    </p:galleria>-->
+                    <!--wwwwwwwwwwwwwwwwwwwwwwwww fin image wwwwwwwwwwwwwwwwwwwwwwwwwwwwww-->
                 </p:layoutUnit>
             </p:layout>
         </h:body>
