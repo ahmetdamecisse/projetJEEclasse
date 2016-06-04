@@ -30,16 +30,16 @@ public class MedecinsFacade extends AbstractFacade<Medecins> {
     }
     
     //*************************************************************
-     public boolean loginControl(String login, String password) {
+     public Medecins loginControl(String login, String password) {
         try {
             Medecins m = em.createNamedQuery("Medecins.findByLoginAndPassword", Medecins.class).setParameter("login", login).setParameter("password", password).getSingleResult();
             if (m != null) {
-               return true;
+               return m;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
+        return null;
     }  
     
 }

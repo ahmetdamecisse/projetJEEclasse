@@ -38,7 +38,30 @@
                     <!--wwwwwwwwwwwwwwwwwwwwwwww début wwwwwwwwwwwwwwwwwwwwwwwwwwwww-->
                     <en:menuBarMedecin/>
                        <br/>
-                    <!--wwwwwwwwwwwwwwwwwwwwwwwwww fin  menu ajout debut listewwwwwwwwwwwwwwwwwwwwwwwwwww-->
+                    <!--wwwwwwwwwwwwwwwwwwwwwwwwww fin  menu bar début formul modif wwwwwwwwwwwwwwwwwwwwwwwwwww-->
+                      <h:form  class="well">
+                        <p:growl id="msgs1" showDetail="true" />  
+                        <p:panel id="basic1" header="Modifier une ordonnance" style="margin-bottom:20px; text-align: center">
+                            <h:panelGrid  columnClasses="label, value">
+                                <h:panelGrid columns="4" columnClasses="label, value">
+                                    <p:inputText value="#{controllerGestionOrdonnance.ordonnance.idordonnance}"  label="idOrdonnance" placeholder="idOrdonnance*" required="true" size="32"/>
+                                    <p:inputText value="#{controllerGestionOrdonnance.idmedecin}"  label="idmedcin" placeholder="idMedcin*" required="true" size="32"/>
+                                    <p:inputText value="#{controllerGestionOrdonnance.idpatient}"  label="idPatient" placeholder="IdPatient*" required="true" size="32"/>
+                                <p:calendar id="datePrescription" value="#{controllerGestionOrdonnance.ordonnance.date}" pattern="dd-MM-yyyy" mask="true"  placeholder="Date de prescription*" required="true" size="32" />
+                              </h:panelGrid>
+                                <h:panelGrid columns="1" columnClasses="label, value">
+                                    <p:editor id="editor1" widgetVar="editorWidget" value="#{controllerGestionOrdonnance.ordonnance.prescription}" width="1170" />
+                                </h:panelGrid>
+                                <br/>
+                                <f:facet name="footer">
+                                    <h:commandButton  value="Ajouter"   action="#{controllerGestionOrdonnance.ajouter()}"   rendered="#{not controllerGestionOrdonnance.modifiable}" />
+                                    <h:commandButton  value="Mêttre à jour"   action="#{controllerGestionOrdonnance.maj()}"  rendered="#{true}"/>
+                                    <h:commandButton  value="Annuler"   action="#{controllerGestionOrdonnance.annuler()}"  />
+                                </f:facet>
+                            </h:panelGrid>
+                        </p:panel>
+                    </h:form>
+                    <!--wwwwwwwwwwwwwwwwwwwwwwwwww fin  formul modif ajout debut listewwwwwwwwwwwwwwwwwwwwwwwwwww-->
                 <h:form>
                          <p:dataTable id="tbl" var="ordx" value="#{controllerGestionOrdonnance.listePrescrits}"
                                      paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
@@ -106,12 +129,12 @@
                                 <f:facet name="header">
                                     <h:outputText value="Modifier" />
                                 </f:facet>
-                                  <h:commandButton  value="Modifier"   action="#{controllerGestionOrdonnance.modifier()}"/>
+                                  <h:commandButton  value="Modifier"   action="#{controllerGestionOrdonnance.modifier(ordx)}"/>
                             </p:column>
                             
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Modifier" />
+                                    <h:outputText value="Supprimer" />
                                 </f:facet>
                                 <h:commandButton  value="Supprimer"   action="#{controllerGestionOrdonnance.supprimer(ordx)}"/>
                             </p:column>

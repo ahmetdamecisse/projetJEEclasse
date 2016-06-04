@@ -24,12 +24,12 @@ public class controllerGestionPatients {
 
     @EJB
     private PatientsFacade patientsFacade;
-
     private Patients patient = new Patients();
 
     private List<Patients> listepatients = new ArrayList<Patients>();
 
     private boolean modifiable;
+    Integer idPatientRecup;
 
     @PostConstruct
     public void init() {
@@ -37,7 +37,7 @@ public class controllerGestionPatients {
         } catch (Throwable th) {
         }
     }
-
+    
     public boolean isModifiable() {
         return modifiable;
     }
@@ -69,9 +69,9 @@ public class controllerGestionPatients {
     }
 
     public String ajouter() {
+ ////       patient.getMedecinsList().add((new loginController()).getLeMedecinQuiSestConnecte());
         patientsFacade.create(patient);
         listepatients = patientsFacade.findAll();
-        //return "nouveauPatients.xhtml";
         return "nouveauPatients.xhtml?faces-redirect=true";
     }
 
@@ -79,13 +79,18 @@ public class controllerGestionPatients {
         return "majPatient.xhtml?faces-redirect=true";
     }
 
-    public String modifier(Patients pati) {
-        modifiable = true;
+    public void modifier(Patients pati) {
+         modifiable=true;
+         idPatientRecup=pati.getIdpatient();
+         System.out.println("Identifiant du patient recu :"+idPatientRecup);
         patient = pati;
-        return null;
     }
 
     public String maj() {
+         System.out.println("Identifiant du patient recu :"+idPatientRecup);
+        patient.setIdpatient(idPatientRecup);
+        System.out.println("Identifiant du patient à modifier est :"+patient.getIdpatient());
+        System.out.println("Identifiant du patient à modifier est :"+patient.getNom());
         patientsFacade.edit(patient);
         listepatients = patientsFacade.findAll();
         modifiable = false;

@@ -5,6 +5,7 @@
  */
 package com.gestionCabinetMedical;
 
+import com.gestionCabinetMedical.entites.Medecins;
 import com.gestionCabinetMedical.sessions.MedecinsFacade;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -26,6 +27,7 @@ public class loginController {
 
     public String username;
     public String password;
+    public Medecins leMedecinQuiSestConnecte=new Medecins();
 
     /**
      * Creates a new instance of loginController
@@ -35,6 +37,10 @@ public class loginController {
 
     public String getUsername() {
         return username;
+    }
+
+    public Medecins getLeMedecinQuiSestConnecte() {
+        return leMedecinQuiSestConnecte;
     }
 
     public void setUsername(String username) {
@@ -49,11 +55,13 @@ public class loginController {
         this.password = password;
     }
 
-     public String loginControl() {
+    public String loginControl() {
         try {
             //à partir d'ici, ondoit recrupèrer l'id du medecin qui s'est connecté 
             //pour pour pouvoir le suivre durant toute ses activités
-             if(medecinsFacade.loginControl(getUsername(), getPassword())){
+            if (medecinsFacade.loginControl(getUsername(), getPassword()) != null) {
+                leMedecinQuiSestConnecte = medecinsFacade.loginControl(getUsername(), getPassword());
+                System.out.println("Le medecin qui s'est connecté est: "+leMedecinQuiSestConnecte.getNom()+leMedecinQuiSestConnecte.getPrenom());
                 return "medecin.xhtml?faces-redirect=true";
             }
             RequestContext.getCurrentInstance().update("growl");
@@ -63,5 +71,5 @@ public class loginController {
         }
         return "";
     }
-    
+
 }

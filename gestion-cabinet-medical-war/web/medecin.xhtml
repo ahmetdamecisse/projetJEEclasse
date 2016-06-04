@@ -14,11 +14,13 @@
         </h:head>
         <h:body>
             <p:layout fullPage="true">
-                <p:layoutUnit position="north" size="120" resizable="true" closable="true" collapsible="true">
-                    Header
+                <p:layoutUnit position="north" size="120" closable="true" collapsible="true" style="background-color: #339900; font-weight: 900;text-shadow: inherit">
+                    <h:outputText value="Bienvenue à la clinique Achhifaa!" style="font-size: 75px; font-style: italic"/>
                 </p:layoutUnit>
-                <p:layoutUnit position="south" size="75" closable="true" collapsible="true">
-                    Footer
+                <p:layoutUnit position="south" size="120" closable="true" collapsible="true" style="background-color: #339900; font-weight: 900;text-shadow: inherit">
+                    <!--*****************************Appel entites footer***************************-->
+                    <en:footer/>
+                    <!--*****************************fin Appel entites footer***************************-->
                 </p:layoutUnit>
                 <p:layoutUnit position="east" size="320" header="Calendrier" collapsible="true">
                     <p:calendar id="calendar1" mode="inline" value="#{controllerGestionMedecin.calendriermedecin}"/>
@@ -35,31 +37,18 @@
                     </h:form>
                 </p:layoutUnit>
                 <p:layoutUnit position="west" size="250" header="Santé" collapsible="true">
-                    <p:menu>
-                        <p:submenu label="Actualités">
-                            <p:menuitem value="Minidtère de la Santé" url="http://www.sante.gouv.sn/" />
-                            <p:menuitem value="Le Monde Santé" url="http://www.lemonde.fr/sante/" />
-                            <p:menuitem value="fedecardio" url="http://www.fedecardio.org/" />
-                            <p:menuitem value="Le Point Santé" url="http://www.lepoint.fr/sante/" />
-                            <p:menuitem value="Gazette Santé Sociale" url="http://www.gazette-sante-social.fr/" />
-                            <p:menuitem value="TF1 Santé" url="http://lci.tf1.fr/science/sante/" />
-                            <p:menuitem value="20 Munites Santé" url="http://www.20minutes.fr/sante//" />
-                            <p:menuitem value="Semaine Santé" url="http://www.semaine-sante-mentale.fr/" />
-                            <p:menuitem value="UNAFAM" url="http://www.unafam.org/" />
-                        </p:submenu>
-                    </p:menu>
+                    <en:menulateralgauche/>
                 </p:layoutUnit>
                 <p:layoutUnit position="center">
                     <!--wwwwwwwwwwwwwwwwwwwwwwww début wwwwwwwwwwwwwwwwwwwwwwwwwwwww-->
                     <en:menuBarMedecin/>
                     <!--wwwwwwwwwwwwwwwwwwwwwwwwww fin  début image wwwwwwwwwwwwwwwwwwwwwwwwwww-->
-<!--                    <p:galleria value="#{controllerGestionMedecin.images}" var="image" panelWidth="1000" panelHeight="413" showCaption="true">
+                    <p:galleria value="#{controllerGestionMedecin.images}" var="image" panelWidth="1000" panelHeight="413" showCaption="true">
                         <p:graphicImage name="/imagepagemedecin/#{image}" alt="Image Description for #{image}" title="#{image}"/>
-                    </p:galleria>-->
+                    </p:galleria>
                     <!--wwwwwwwwwwwwwwwwwwwwwwwww fin image wwwwwwwwwwwwwwwwwwwwwwwwwwwwww-->
                 </p:layoutUnit>
             </p:layout>
         </h:body>
     </f:view>
 </html>
-

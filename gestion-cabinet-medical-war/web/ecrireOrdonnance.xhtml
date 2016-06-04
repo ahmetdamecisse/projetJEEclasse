@@ -43,12 +43,12 @@
                         <p:panel id="basic1" header="Ecrire une ordonnance" style="margin-bottom:20px; text-align: center">
                             <h:panelGrid  columnClasses="label, value">
                                 <h:panelGrid columns="3" columnClasses="label, value">
-                                    <p:inputText value="#{controllerGestionOrdonnance.idmedecin}"  label="idmedcin" placeholder="idMedcin*" required="true"/>
-                                    <p:inputText value="#{controllerGestionOrdonnance.idpatient}"  label="idPatient" placeholder="IdPatient*" required="true"/>
-                                <p:calendar id="datePrescription" value="#{controllerGestionOrdonnance.ordonnance.date}" pattern="dd-MM-yyyy" mask="true"  placeholder="Date de prescription*" required="true" />
+                                    <p:inputText value="#{controllerGestionOrdonnance.idmedecin}"  label="idmedcin" placeholder="idMedcin*" required="true" size="34"/>
+                                    <p:inputText value="#{controllerGestionOrdonnance.idpatient}"  label="idPatient" placeholder="IdPatient*" required="true" size="34"/>
+                                <p:calendar id="datePrescription" value="#{controllerGestionOrdonnance.ordonnance.date}" pattern="dd-MM-yyyy" mask="true"  placeholder="Date de prescription*" required="true" size="34" />
                               </h:panelGrid>
                                 <h:panelGrid columns="1" columnClasses="label, value">
-                                    <p:editor id="editor1" widgetVar="editorWidget" value="#{controllerGestionOrdonnance.ordonnance.prescription}" width="600" />
+                                    <p:editor id="editor1" widgetVar="editorWidget" value="#{controllerGestionOrdonnance.ordonnance.prescription}" width="925" />
                                 </h:panelGrid>
                                 <br/>
                                 <f:facet name="footer">

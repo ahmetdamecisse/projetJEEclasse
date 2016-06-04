@@ -38,9 +38,39 @@
                     <!--wwwwwwwwwwwwwwwwwwwwwwww début wwwwwwwwwwwwwwwwwwwwwwwwwwwww-->
                     <en:menuBarMedecin/>
                     <br/>
-                    <!--***********************************************************************-->
-                     <h:form>
-                         <p:dataTable id="tbl" var="diagnosticx" value="#{controllerGestionDignostics.listeEtablits}"
+                    <!--*********************************Debut liste************************-->
+                    <h:form  class="well">
+                        <p:growl id="msgs1" showDetail="true" />  
+                        <p:panel id="basic1" header="Etablir un diagnostic" style="margin-bottom:20px; text-align: center">
+                            <h:panelGrid  columnClasses="label, value">
+                                <h:panelGrid columns="4" columnClasses="label, value">
+                                    <p:inputText value="#{controllerGestionDignostics.diagnostic.iddiagnostic}"  label="iddiagnostic" placeholder="iddiagnostic*" required="true"/>
+                                    <p:inputText value="#{controllerGestionDignostics.idmedecin}"  label="idmedcin" placeholder="idMedcin*" required="true"/>
+                                    <p:inputText value="#{controllerGestionDignostics.idpatient}"  label="idPatient" placeholder="IdPatient*" required="true"/>
+                                    <p:inputText value="#{controllerGestionDignostics.idTest}"  label="idTest" placeholder="IdTest*" required="true"/>
+                                </h:panelGrid>
+                                <h:panelGrid columns="1" columnClasses="label, value">
+                                    <br/>
+                                    Un petit résumé.
+                                    <p:editor id="editorLidele" widgetVar="editorWidget" value="#{controllerGestionDignostics.diagnostic.resume}" width="600"  />
+                                </h:panelGrid>
+                                <h:panelGrid columns="1" columnClasses="label, value">
+                                    <br/>
+                                    La description du diagnostic.
+                                    <p:editor id="editorResultat" widgetVar="editorWidget" value="#{controllerGestionDignostics.diagnostic.description}" width="600" />
+                                </h:panelGrid>
+                                <br/>
+                                <f:facet name="footer">
+                                    <h:commandButton  value="Ajouter"   action="#{controllerGestionDignostics.ajouter()}" rendered="#{not controllerGestionDignostics.modifiable}"   />
+                                    <h:commandButton  value="Mêttre à jour"   action="#{controllerGestionDignostics.maj()}" rendered="#{true}"   />
+                                    <h:commandButton  value="Annuler"   action="#{controllerGestionDignostics.annuler()}"  />
+                                </f:facet>
+                            </h:panelGrid>
+                        </p:panel>
+                    </h:form>
+                    <!--*********************************Fin liste************************-->
+                    <h:form>
+                        <p:dataTable id="tbl" var="diagnosticx" value="#{controllerGestionDignostics.listeEtablits}"
                                      paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
                                      paginator="true" rows="10" style="margin-bottom:20px" 
                                      scrollable="true" resizableColumns="true" draggableColumns="true">
@@ -72,12 +102,12 @@
                                 </f:facet>
                                 <h:outputText value="#{diagnosticx.medecins.idmedecin}" />
                             </p:column>
-                            
-                              <p:column>
+
+                            <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="IdPatient" />
                                 </f:facet>
-                                  <h:outputText value="#{diagnosticx.patients.idpatient}" />
+                                <h:outputText value="#{diagnosticx.patients.idpatient}" />
                             </p:column>
 
                             <p:column>
@@ -100,26 +130,26 @@
                                 </f:facet>
                                 <h:outputText value="#{diagnosticx.diagnostics.resume}" />
                             </p:column>
-                             
-                             <p:column>
+
+                            <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="description" />
                                 </f:facet>
-                                 <h:outputText value="#{diagnosticx.diagnostics.description}" />
+                                <h:outputText value="#{diagnosticx.diagnostics.description}" />
                             </p:column>
-                             
-                               <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Modifier" />
-                                </f:facet>
-                                   <h:commandButton  value="Modifier"   action="#{controllerGestionDignostics.modifier()}"/>
-                            </p:column>
-                            
+
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Modifier" />
                                 </f:facet>
-                                <h:commandButton  value="Supprimer"   action="#{controllerGestionDignostics.supprimer()}"/>
+                                <h:commandButton  value="Modifier"   action="#{controllerGestionDignostics.modifier(diagnosticx)}"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Suppression" />
+                                </f:facet>
+                                <h:commandButton  value="Supprimer"   action="#{controllerGestionDignostics.supprimer(diagnosticx)}"/>
                             </p:column>
 
                         </p:dataTable>

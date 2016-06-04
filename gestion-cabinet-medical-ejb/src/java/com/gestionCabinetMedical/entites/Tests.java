@@ -73,6 +73,15 @@ public class Tests implements Serializable {
         this.idordonnance = idordonnance;
         this.idpatient = idpatient;
     }
+    
+     public Tests(Integer idtest, String libele, String type, String resultas, Ordonnances idordonnance, Patients idpatient) {
+         this.idtest=idtest;
+        this.libele = libele;
+        this.type = type;
+        this.resultas = resultas;
+        this.idordonnance = idordonnance;
+        this.idpatient = idpatient;
+    }
 
     public Tests(Integer idtest) {
         this.idtest = idtest;

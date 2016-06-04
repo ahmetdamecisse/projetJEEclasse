@@ -22,7 +22,7 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean
 @RequestScoped
 public class controllerGestionTests {
-
+    
     @EJB
     private OrdonnancesFacade ordonnancesFacade;
     @EJB
@@ -74,9 +74,19 @@ public class controllerGestionTests {
     }
     private Integer idOrdonnance;
     private Integer idpatient;
+    private Integer idtestrecup;
     private String libele;
     private String type;
     private String resultats;
+
+    public boolean isModifiable() {
+        return modifiable;
+    }
+
+    public void setModifiable(boolean modifiable) {
+        this.modifiable = modifiable;
+    }
+    private boolean modifiable;
     
     public List<Tests> getListeTests() {
         return testsFacade.findAll();
@@ -111,17 +121,33 @@ public class controllerGestionTests {
     
     public String annuler() {
         //On doit vider le formulaire
-        return "";
+        return "majtest.xhtml?faces-redirect=true";
     }
     
-    public String modifier() {
-        //Modifier prescrit et ordonnance
-        return "";
+    public String modifier(Tests test1) {
+    modifiable=true;
+        //Modifier un test
+    idtestrecup=test1.getIdtest();
+    idOrdonnance=test1.getIdordonnance().getIdordonnance();
+    idpatient=test1.getIdpatient().getIdpatient();
+    libele=test1.getLibele();
+    type=test1.getType();
+    resultats=test1.getResultas();
+        return null;
     }
     
-    public String supprimer() {
-        //supprimer prescrit et ordonnance
-        return "";
+    public String maj() {
+        test=new Tests(idtestrecup, libele, type, resultats, ordonnancesFacade.find(idOrdonnance), patientsFacade.find(idpatient));
+        testsFacade.edit(test);
+        return "majtest.xhtml?faces-redirect=true";
+    }
+    
+    public String supprimer(Tests test) {
+        //supprimer etablit, puis diagnostic et enfin test
+        //Il reste à supprimer le digno utilisant ce test.
+        testsFacade.remove(test);
+        listeTests = testsFacade.findAll();
+        return "majtest.xhtml?faces-redirect=true";
     }
     
 }

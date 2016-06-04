@@ -18,10 +18,10 @@
             30
         </session-timeout>
     </session-config>
-<!--    <context-param>
+    <context-param>
         <param-name>primefaces.THEME</param-name>
         <param-value>south-street</param-value>
-    </context-param>-->
+    </context-param>
     <welcome-file-list>
         <welcome-file>gcm/index.xhtml</welcome-file>
     </welcome-file-list>

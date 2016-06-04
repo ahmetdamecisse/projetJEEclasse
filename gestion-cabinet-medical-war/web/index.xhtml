@@ -14,13 +14,15 @@ and open the template in the editor.
         <title>Login</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
-    <h:body>
+    <h:body style="background-image: url(http://www.bw-archi.fr/photos/projets/7-max-1.jpg);background-repeat: no-repeat; background-size: cover">
         <p:growl id="growl" sticky="true" showDetail="true"/>
-        <h:form>
-            <p:panelGrid columns="1" style="position: absolute; top: 250px;  left: 600px" >
-                <f:facet name="header"><h:outputText value="Authentification" /></f:facet>
-                <p:inputText value="#{loginController.username}" placeholder="votre login"/>
-                <p:password value="#{loginController.password}" placeholder="Votre mot de passe"/>
+        <h:form style="size: portrait">
+            <p:panelGrid columns="1" style="position: absolute; top: 250px;  left: 500px">
+                <f:facet name="header">
+                    <h:outputText value="Authentification" />
+                </f:facet>
+                <p:inputText value="#{loginController.username}" placeholder="votre login" size="50"/>
+                <p:password value="#{loginController.password}" placeholder="Votre mot de passe" size="50"/>
                 <f:facet name="footer">
                     <p:commandButton  value="Se connecter"   action="#{loginController.loginControl}"  icon="ui-icon-disk"/>
                 </f:facet>

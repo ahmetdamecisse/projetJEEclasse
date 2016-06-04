@@ -42,14 +42,14 @@
                         <p:growl id="msgs1" showDetail="true" />  
                         <p:panel id="basic1" header="Ajouter un patient" style="margin-bottom:20px; text-align: center">
                             <h:panelGrid columns="4" columnClasses="label, value">
-                                <p:inputMask id="cni" value="#{controllerGestionPatients.patient.cni}" mask="9999999999999"  placeholder="CNI"/>
-                                <p:inputText value="#{controllerGestionPatients.patient.nom}"  label="Nom" placeholder="Nom*" required="true"/>
-                                <p:inputText value="#{controllerGestionPatients.patient.prenom}"  label="prenom" placeholder="Prénom*" required="true"/>
-                                <p:calendar id="datenaiss1" value="#{controllerGestionPatients.patient.datenaissance}" pattern="dd-MM-yyyy" mask="true"  placeholder="Date de naissance*" required="true" />
-                                <p:inputText value="#{controllerGestionPatients.patient.adresse}"  label="adresse" placeholder="Adresse*" required="true"/>
-                                <p:inputMask id="Telephone1" value="#{controllerGestionPatients.patient.telephone}" mask="99-999-99-99"  placeholder="Téléphone*" required="true"/>
-                                <p:inputText value="#{controllerGestionPatients.patient.mail}"  label="mail" placeholder="Mail"/>
-                                <p:inputText value="#{controllerGestionPatients.patient.bp}"  label="bp" placeholder="BP"/>
+                                <p:inputMask id="cni" value="#{controllerGestionPatients.patient.cni}" mask="9999999999999"  placeholder="CNI" size="25"/>
+                                <p:inputText value="#{controllerGestionPatients.patient.nom}"  label="Nom" placeholder="Nom*" required="true" size="25"/>
+                                <p:inputText value="#{controllerGestionPatients.patient.prenom}"  label="prenom" placeholder="Prénom*" required="true" size="25"/>
+                                <p:calendar id="datenaiss1" value="#{controllerGestionPatients.patient.datenaissance}" pattern="dd-MM-yyyy" mask="true"  placeholder="Date de naissance*" required="true" size="25" />
+                                <p:inputText value="#{controllerGestionPatients.patient.adresse}"  label="adresse" placeholder="Adresse*" required="true" size="25"/>
+                                <p:inputMask id="Telephone1" value="#{controllerGestionPatients.patient.telephone}" mask="99-999-99-99"  placeholder="Téléphone*" required="true" size="25"/>
+                                <p:inputText value="#{controllerGestionPatients.patient.mail}"  label="mail" placeholder="Mail" size="25"/>
+                                <p:inputText value="#{controllerGestionPatients.patient.bp}"  label="bp" placeholder="BP" size="25"/>
                                 <!-- il reste la photo -->
                                 <br/><br/><br/>
                                 <f:facet name="footer">

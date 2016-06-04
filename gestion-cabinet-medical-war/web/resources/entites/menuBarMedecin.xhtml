@@ -49,11 +49,17 @@
                     </p:submenu>
                 </p:submenu>
                 <p:submenu label="Statistiques" icon="ui-icon-gear">
-                    <p:submenu label="Ajax" icon="ui-icon-refresh">
+                    <p:submenu label="Analyses" icon="ui-icon-refresh">
                         <p:menuitem value="Save" actionListener="#{menuView.save}" icon="ui-icon-disk" update="messages"/>
                         <p:menuitem value="Update" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w" update="messages"/>
                     </p:submenu>
-                    <p:submenu label="Non-Ajax" icon="ui-icon-newwin">
+                    <p:submenu label="Diagnostics" icon="ui-icon-newwin">
+                        <p:menuitem value="Delete" actionListener="#{menuView.delete}" icon="ui-icon-close" update="messages" ajax="false"/>
+                    </p:submenu>
+                    <p:submenu label="Medecins" icon="ui-icon-newwin">
+                        <p:menuitem value="Delete" actionListener="#{menuView.delete}" icon="ui-icon-close" update="messages" ajax="false"/>
+                    </p:submenu>
+                    <p:submenu label="Patients" icon="ui-icon-newwin">
                         <p:menuitem value="Delete" actionListener="#{menuView.delete}" icon="ui-icon-close" update="messages" ajax="false"/>
                     </p:submenu>
                 </p:submenu>
