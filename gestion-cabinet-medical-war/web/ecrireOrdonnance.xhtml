@@ -20,9 +20,9 @@
                 <p:layoutUnit position="south" size="75" closable="true" collapsible="true">
                     Footer
                 </p:layoutUnit>
-                <p:layoutUnit position="east" size="320" header="Calendrier" collapsible="true">
-<!--                    <p:calendar id="calendar1" mode="inline" value="#{controllerGestionMedecin.calendriermedecin}" size="50"/>
-                    Space vide à exploiter.-->
+                <p:layoutUnit position="east" size="320" header="Calendrier" collapsible="true" collapsed="true">
+                    <p:calendar id="calendar1" mode="inline" value="#{controllerGestionMedecin.calendriermedecin}" size="50"/>
+                    Space vide à exploiter.
                 </p:layoutUnit>
                 <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
                     <p:menu>
@@ -40,15 +40,15 @@
                     <!--yyyyyyyyyyyyyyyyyyyyyy      yyyyyyyyyyyyyyyyyy-->
                     <h:form  class="well">
                         <p:growl id="msgs1" showDetail="true" />  
-                        <p:panel id="basic1" header="Ecrire une ordonnance" style="margin-bottom:20px; text-align: center">
+                        <p:panel id="basic1" header="Prescrire une ordonnance." style="margin-bottom:20px; text-align: center">
                             <h:panelGrid  columnClasses="label, value">
                                 <h:panelGrid columns="3" columnClasses="label, value">
-                                    <p:inputText value="#{controllerGestionOrdonnance.idmedecin}"  label="idmedcin" placeholder="idMedcin*" required="true" size="34"/>
-                                    <p:inputText value="#{controllerGestionOrdonnance.idpatient}"  label="idPatient" placeholder="IdPatient*" required="true" size="34"/>
-                                <p:calendar id="datePrescription" value="#{controllerGestionOrdonnance.ordonnance.date}" pattern="dd-MM-yyyy" mask="true"  placeholder="Date de prescription*" required="true" size="34" />
+                                    <p:inputText value="#{controllerGestionOrdonnance.idmedecin}"  label="idmedcin" placeholder="idMedcin*" required="true" size="37"/>
+                                    <p:inputText value="#{controllerGestionOrdonnance.idpatient}"  label="idPatient" placeholder="IdPatient*" required="true" size="37"/>
+                                <p:calendar id="datePrescription" value="#{controllerGestionOrdonnance.ordonnance.date}" pattern="dd-MM-yyyy" mask="true"  placeholder="Date de prescription*" required="true" size="37" />
                               </h:panelGrid>
                                 <h:panelGrid columns="1" columnClasses="label, value">
-                                    <p:editor id="editor1" widgetVar="editorWidget" value="#{controllerGestionOrdonnance.ordonnance.prescription}" width="925" />
+                                    <p:editor id="editor1" widgetVar="editorWidget" value="#{controllerGestionOrdonnance.ordonnance.prescription}" width="1030" />
                                 </h:panelGrid>
                                 <br/>
                                 <f:facet name="footer">

@@ -60,6 +60,14 @@ public class controllerGestionTests {
     public String getType() {
         return type;
     }
+
+    public Integer getIdtestrecup() {
+        return idtestrecup;
+    }
+
+    public void setIdtestrecup(Integer idtestrecup) {
+        this.idtestrecup = idtestrecup;
+    }
     
     public void setType(String type) {
         this.type = type;
@@ -128,6 +136,7 @@ public class controllerGestionTests {
     modifiable=true;
         //Modifier un test
     idtestrecup=test1.getIdtest();
+    System.out.println("**********************"+idtestrecup);
     idOrdonnance=test1.getIdordonnance().getIdordonnance();
     idpatient=test1.getIdpatient().getIdpatient();
     libele=test1.getLibele();
@@ -138,6 +147,7 @@ public class controllerGestionTests {
     
     public String maj() {
         test=new Tests(idtestrecup, libele, type, resultats, ordonnancesFacade.find(idOrdonnance), patientsFacade.find(idpatient));
+      
         testsFacade.edit(test);
         return "majtest.xhtml?faces-redirect=true";
     }

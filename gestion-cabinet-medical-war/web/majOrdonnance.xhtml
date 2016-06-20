@@ -44,13 +44,13 @@
                         <p:panel id="basic1" header="Modifier une ordonnance" style="margin-bottom:20px; text-align: center">
                             <h:panelGrid  columnClasses="label, value">
                                 <h:panelGrid columns="4" columnClasses="label, value">
-                                    <p:inputText value="#{controllerGestionOrdonnance.ordonnance.idordonnance}"  label="idOrdonnance" placeholder="idOrdonnance*" required="true" size="32"/>
-                                    <p:inputText value="#{controllerGestionOrdonnance.idmedecin}"  label="idmedcin" placeholder="idMedcin*" required="true" size="32"/>
-                                    <p:inputText value="#{controllerGestionOrdonnance.idpatient}"  label="idPatient" placeholder="IdPatient*" required="true" size="32"/>
-                                <p:calendar id="datePrescription" value="#{controllerGestionOrdonnance.ordonnance.date}" pattern="dd-MM-yyyy" mask="true"  placeholder="Date de prescription*" required="true" size="32" />
+                                    <p:inputText value="#{controllerGestionOrdonnance.ordonnance.idordonnance}"  label="idOrdonnance" placeholder="idOrdonnance*" required="true" size="26"/>
+                                    <p:inputText value="#{controllerGestionOrdonnance.idmedecin}"  label="idmedcin" placeholder="idMedcin*" required="true" size="26"/>
+                                    <p:inputText value="#{controllerGestionOrdonnance.idpatient}"  label="idPatient" placeholder="IdPatient*" required="true" size="26"/>
+                                <p:calendar id="datePrescription" value="#{controllerGestionOrdonnance.ordonnance.date}" pattern="dd-MM-yyyy" mask="true"  placeholder="Date de prescription*" required="true" size="26" />
                               </h:panelGrid>
                                 <h:panelGrid columns="1" columnClasses="label, value">
-                                    <p:editor id="editor1" widgetVar="editorWidget" value="#{controllerGestionOrdonnance.ordonnance.prescription}" width="1170" />
+                                    <p:editor id="editor1" widgetVar="editorWidget" value="#{controllerGestionOrdonnance.ordonnance.prescription}" width="1030" />
                                 </h:panelGrid>
                                 <br/>
                                 <f:facet name="footer">

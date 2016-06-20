@@ -21,8 +21,8 @@
                     Footer
                 </p:layoutUnit>
                 <p:layoutUnit position="east" size="320" header="Calendrier" collapsible="true">
-<!--                    <p:calendar id="calendar1" mode="inline" value="#{controllerGestionMedecin.calendriermedecin}" size="50"/>
-                    Space vide à exploiter.-->
+                    <p:calendar id="calendar1" mode="inline" value="#{controllerGestionMedecin.calendriermedecin}" size="50"/>
+                    Space vide à exploiter.
                 </p:layoutUnit>
                 <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
                     <p:menu>
@@ -43,19 +43,19 @@
                         <p:panel id="basic1" header="Demander une analyse" style="margin-bottom:20px; text-align: center">
                             <h:panelGrid  columnClasses="label, value">
                                 <h:panelGrid columns="3" columnClasses="label, value">
-                                    <p:inputText value="#{controllerGestionTests.idOrdonnance}"  label="idordonTest" placeholder="id de l'ordonnance*" required="true"/>
-                                    <p:inputText value="#{controllerGestionTests.idpatient}"  label="idPatient" placeholder="Id du Patient*" required="true"/>
-                                    <p:inputText value="#{controllerGestionTests.type}"  label="type analyse" placeholder="type d'analyse*" required="true"/>
+                                    <p:inputText value="#{controllerGestionTests.idOrdonnance}"  label="idordonTest" placeholder="id de l'ordonnance*" required="true" size="26"/>
+                                    <p:inputText value="#{controllerGestionTests.idpatient}"  label="idPatient" placeholder="Id du Patient*" required="true" size="26"/>
+                                    <p:inputText value="#{controllerGestionTests.type}"  label="type analyse" placeholder="type d'analyse*" required="true" size="26"/>
                                 </h:panelGrid>
                                 <h:panelGrid columns="1" columnClasses="label, value">
                                     <br/>
                                     Ecrire le libelé de l'analyse.
-                                    <p:editor id="editorLidele" widgetVar="editorWidget" value="#{controllerGestionTests.libele}" width="600"  />
+                                    <p:editor id="editorLidele" widgetVar="editorWidget" value="#{controllerGestionTests.libele}" width="760"  />
                                 </h:panelGrid>
                                   <h:panelGrid columns="1" columnClasses="label, value">
                                    <br/>
                                     Les résultats de l'analyse sont attendus.
-                                    <p:editor id="editorResultat" widgetVar="editorWidget" value="#{controllerGestionTests.resultats}" width="600" />
+                                    <p:editor id="editorResultat" widgetVar="editorWidget" value="#{controllerGestionTests.resultats}" width="760" />
                                 </h:panelGrid>
                                 <br/>
                                 <f:facet name="footer">
