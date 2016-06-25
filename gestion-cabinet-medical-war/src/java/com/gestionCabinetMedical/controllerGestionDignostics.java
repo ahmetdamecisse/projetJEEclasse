@@ -131,6 +131,7 @@ public class controllerGestionDignostics {
 //Modifier Diagnostic
         diagnosticsFacade.edit(diagnostic);
 //Modifier Etablit
+        //etablitFacade.edit(etablit);
         return "majDiagnostic.xhtml?faces-redirect=true";
     }
       

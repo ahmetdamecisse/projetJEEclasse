@@ -14,30 +14,18 @@
         </h:head>
         <h:body>
             <p:layout fullPage="true">
-                <p:layoutUnit position="north" size="120" resizable="true" closable="true" collapsible="true">
-                    Header
+               <p:layoutUnit position="north" size="120" closable="true" collapsible="true" style="background-color: #339900; font-weight: 900;text-shadow: inherit">
+                    <marquee> <h1><font style="font-size: 65px; font-style: italic"><b><center>Bienvenue à la clinique Achhifaa!</center></b> </font></h1></marquee>
                 </p:layoutUnit>
-                <p:layoutUnit position="south" size="75" closable="true" collapsible="true">
-                    Footer
+                <p:layoutUnit position="south" size="80" closable="true" collapsible="true">
+                     <en:footer/>
                 </p:layoutUnit>
-                <!--                <p:layoutUnit position="east" size="320" header="Calendrier" collapsible="true">
+                                <p:layoutUnit position="east" size="320" header="Calendrier" collapsible="true">
                                     <p:calendar id="calendar1" mode="inline" value="#{controllerGestionMedecin.calendriermedecin}" size="50"/>
                                     Space vide à exploiter.
-                                </p:layoutUnit>-->
+                                </p:layoutUnit>
                 <p:layoutUnit position="west" size="250" header="Santé" collapsible="true">
-                    <p:menu>
-                        <p:submenu label="Actualités">
-                            <p:menuitem value="Minidtère de la Santé" url="http://www.sante.gouv.sn/" />
-                            <p:menuitem value="Le Monde Santé" url="http://www.lemonde.fr/sante/" />
-                            <p:menuitem value="fedecardio" url="http://www.fedecardio.org/" />
-                            <p:menuitem value="Le Point Santé" url="http://www.lepoint.fr/sante/" />
-                            <p:menuitem value="Gazette Santé Sociale" url="http://www.gazette-sante-social.fr/" />
-                            <p:menuitem value="TF1 Santé" url="http://lci.tf1.fr/science/sante/" />
-                            <p:menuitem value="20 Munites Santé" url="http://www.20minutes.fr/sante//" />
-                            <p:menuitem value="Semaine Santé" url="http://www.semaine-sante-mentale.fr/" />
-                            <p:menuitem value="UNAFAM" url="http://www.unafam.org/" />
-                        </p:submenu>
-                    </p:menu>
+                    <en:menulateralgauche/>
                 </p:layoutUnit>
                 <p:layoutUnit position="center">
                     <!--wwwwwwwwwwwwwwwwwwwwwwww début wwwwwwwwwwwwwwwwwwwwwwwwwwwww-->
@@ -48,14 +36,16 @@
                         <p:growl id="msgs1" showDetail="true" />  
                         <p:panel id="basic1" header="Modifier les informtions personnelles." style="margin-bottom:20px; text-align: center">
                             <h:panelGrid columns="4" columnClasses="label, value">
-                                <p:inputMask id="cni" value="#{controllerGestionPatients.patient.cni}" mask="9999999999999"  placeholder="CNI" size="27"/>
-                                <p:inputText value="#{controllerGestionPatients.patient.nom}"  label="Nom" placeholder="Nom*" required="true" size="27"/>
-                                <p:inputText value="#{controllerGestionPatients.patient.prenom}"  label="prenom" placeholder="Prénom*" required="true" size="27"/>
-                                <p:calendar id="datenaiss1" value="#{controllerGestionPatients.patient.datenaissance}" pattern="dd-MM-yyyy" mask="true"  placeholder="Date de naissance*" required="true" size="27"/>
-                                <p:inputText value="#{controllerGestionPatients.patient.adresse}"  label="adresse" placeholder="Adresse*" required="true" size="27"/>
-                                <p:inputMask id="Telephone1" value="#{controllerGestionPatients.patient.telephone}" mask="99-999-99-99"  placeholder="Téléphone*" required="true" size="27"/>
-                                <p:inputText value="#{controllerGestionPatients.patient.mail}"  label="mail" placeholder="Mail" size="27"/>
-                                <p:inputText value="#{controllerGestionPatients.patient.bp}"  label="bp" placeholder="BP" size="27"/>
+                                <p:inputText value="#{controllerGestionPatients.patient.idpatient}"  label="idpatient" placeholder="IdPatient*" required="true" size="16"/>
+                                <p:inputMask id="cni" value="#{controllerGestionPatients.patient.cni}" mask="9999999999999"  placeholder="CNI" size="16"/>
+                                <p:inputText value="#{controllerGestionPatients.patient.nom}"  label="Nom" placeholder="Nom*" required="true" size="16"/>
+                                <p:inputText value="#{controllerGestionPatients.patient.prenom}"  label="prenom" placeholder="Prénom*" required="true" size="16"/>
+                                <p:calendar id="datenaiss1" value="#{controllerGestionPatients.patient.datenaissance}" pattern="dd-MM-yyyy" mask="true"  placeholder="Date de naissance*" required="true" size="16"/>
+                                <p:inputText value="#{controllerGestionPatients.patient.adresse}"  label="adresse" placeholder="Adresse*" required="true" size="16"/>
+                                <p:inputMask id="Telephone1" value="#{controllerGestionPatients.patient.telephone}" mask="99-999-99-99"  placeholder="Téléphone*" required="true" size="16"/>
+                                <p:inputText value="#{controllerGestionPatients.patient.mail}"  label="mail" placeholder="Mail" size="16"/>
+                                <p:inputText value="#{controllerGestionPatients.patient.bp}"  label="bp" placeholder="BP" size="16"/>
+                                
                                 <!-- il reste la photo -->
                                 <br/><br/><br/>
                                 <f:facet name="footer">

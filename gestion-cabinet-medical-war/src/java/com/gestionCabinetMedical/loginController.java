@@ -27,7 +27,7 @@ public class loginController {
 
     public String username;
     public String password;
-    public Medecins leMedecinQuiSestConnecte=new Medecins();
+    public Medecins leMedecinQuiSestConnecte = new Medecins();
 
     /**
      * Creates a new instance of loginController
@@ -61,7 +61,7 @@ public class loginController {
             //pour pour pouvoir le suivre durant toute ses activités
             if (medecinsFacade.loginControl(getUsername(), getPassword()) != null) {
                 leMedecinQuiSestConnecte = medecinsFacade.loginControl(getUsername(), getPassword());
-                System.out.println("Le medecin qui s'est connecté est: "+leMedecinQuiSestConnecte.getNom()+leMedecinQuiSestConnecte.getPrenom());
+                System.out.println("Le medecin qui s'est connecté est: " + leMedecinQuiSestConnecte.getNom() + leMedecinQuiSestConnecte.getPrenom());
                 return "medecin.xhtml?faces-redirect=true";
             }
             RequestContext.getCurrentInstance().update("growl");
@@ -72,4 +72,7 @@ public class loginController {
         return "";
     }
 
+    public String logoutControl() {
+       return "index.xhtml?faces-redirect=true";
+    }
 }

@@ -37,7 +37,7 @@ public class controllerGestionPatients {
         } catch (Throwable th) {
         }
     }
-    
+
     public boolean isModifiable() {
         return modifiable;
     }
@@ -69,7 +69,7 @@ public class controllerGestionPatients {
     }
 
     public String ajouter() {
- ////       patient.getMedecinsList().add((new loginController()).getLeMedecinQuiSestConnecte());
+        ////       patient.getMedecinsList().add((new loginController()).getLeMedecinQuiSestConnecte());
         patientsFacade.create(patient);
         listepatients = patientsFacade.findAll();
         return "nouveauPatients.xhtml?faces-redirect=true";
@@ -80,18 +80,13 @@ public class controllerGestionPatients {
     }
 
     public void modifier(Patients pati) {
-         modifiable=true;
-         idPatientRecup=pati.getIdpatient();
-         System.out.println("Identifiant du patient recu :"+idPatientRecup);
+        modifiable = true;
+        idPatientRecup = pati.getIdpatient();
         patient = pati;
     }
 
     public String maj() {
-        System.out.println("Identifiant du patient recu :"+idPatientRecup);
-        patient.setIdpatient(idPatientRecup);
-        System.out.println("Identifiant du patient à modifier est :"+patient.getIdpatient());
-        System.out.println("Identifiant du patient à modifier est :"+patient.getNom());
-       // patientsFacade.edit(patient);
+        patientsFacade.edit(patient);
         listepatients = patientsFacade.findAll();
         modifiable = false;
         return "majPatient.xhtml?faces-redirect=true";

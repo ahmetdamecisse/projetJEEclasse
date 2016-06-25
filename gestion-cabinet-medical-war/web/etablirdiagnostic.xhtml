@@ -14,25 +14,18 @@
         </h:head>
         <h:body>
             <p:layout fullPage="true">
-                <p:layoutUnit position="north" size="120" resizable="true" closable="true" collapsible="true">
-                    Header
+                <p:layoutUnit position="north" size="120" closable="true" collapsible="true" style="background-color: #339900; font-weight: 900;text-shadow: inherit">
+                    <marquee> <h1><font style="font-size: 65px; font-style: italic"><b><center>Bienvenue à la clinique Achhifaa!</center></b> </font></h1></marquee>
                 </p:layoutUnit>
-                <p:layoutUnit position="south" size="75" closable="true" collapsible="true">
-                    Footer
+                <p:layoutUnit position="south" size="80" closable="true" collapsible="true">
+                   <en:footer/>
                 </p:layoutUnit>
                 <p:layoutUnit position="east" size="320" header="Calendrier" collapsible="true">
-<!--                    <p:calendar id="calendar1" mode="inline" value="#{controllerGestionMedecin.calendriermedecin}" size="50"/>
-                    Space vide à exploiter.-->
+                    <p:calendar id="calendar1" mode="inline" value="#{controllerGestionMedecin.calendriermedecin}" size="50"/>
+                    Space vide à exploiter.
                 </p:layoutUnit>
-                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
-                    <p:menu>
-                        <p:submenu label="Actualités">
-                            <p:menuitem value="Demo" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
-                            <p:menuitem value="Documentation" url="http://www.primefaces.org/documentation.html" />
-                            <p:menuitem value="Forum" url="http://forum.primefaces.org/" />
-                            <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
-                        </p:submenu>
-                    </p:menu>
+                 <p:layoutUnit position="west" size="175" header="Santé" collapsible="true">
+                    <en:menulateralgauche/>
                 </p:layoutUnit>
                 <p:layoutUnit position="center">
                     <!--wwwwwwwwwwwwwwwwwwwwwwww début wwwwwwwwwwwwwwwwwwwwwwwwwwwww-->
@@ -43,19 +36,19 @@
                         <p:panel id="basic1" header="Etablir un diagnostic" style="margin-bottom:20px; text-align: center">
                             <h:panelGrid  columnClasses="label, value">
                                 <h:panelGrid columns="3" columnClasses="label, value">
-                                    <p:inputText value="#{controllerGestionDignostics.idmedecin}"  label="idmedcin" placeholder="idMedcin*" required="true"/>
-                                    <p:inputText value="#{controllerGestionDignostics.idpatient}"  label="idPatient" placeholder="IdPatient*" required="true"/>
-                                    <p:inputText value="#{controllerGestionDignostics.idTest}"  label="idTest" placeholder="IdTest*" required="true"/>
+                                    <p:inputText value="#{controllerGestionDignostics.idmedecin}"  label="idmedcin" placeholder="idMedcin*" required="true" size="26"/>
+                                    <p:inputText value="#{controllerGestionDignostics.idpatient}"  label="idPatient" placeholder="IdPatient*" required="true" size="26"/>
+                                    <p:inputText value="#{controllerGestionDignostics.idTest}"  label="idTest" placeholder="IdTest*" required="true" size="26"/>
                               </h:panelGrid>
                                  <h:panelGrid columns="1" columnClasses="label, value">
                                     <br/>
                                     Un petit résumé.
-                                    <p:editor id="editorLidele" widgetVar="editorWidget" value="#{controllerGestionDignostics.diagnostic.resume}" width="600"  />
+                                    <p:editor id="editorLidele" widgetVar="editorWidget" value="#{controllerGestionDignostics.diagnostic.resume}" width="770"  />
                                 </h:panelGrid>
                                   <h:panelGrid columns="1" columnClasses="label, value">
                                    <br/>
                                     La description du diagnostic.
-                                    <p:editor id="editorResultat" widgetVar="editorWidget" value="#{controllerGestionDignostics.diagnostic.description}" width="600" />
+                                    <p:editor id="editorResultat" widgetVar="editorWidget" value="#{controllerGestionDignostics.diagnostic.description}" width="770" />
                                 </h:panelGrid>
                                 <br/>
                                 <f:facet name="footer">
